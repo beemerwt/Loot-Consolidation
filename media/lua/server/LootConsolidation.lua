@@ -3,21 +3,21 @@ LootConsolidation = _G['LootConsolidation'] or {}
 
 LootConsolidation.Options = {
   -- Should remove zombies after they've been consolidated?
-  shouldRemove = true,
+  shouldRemove = false,
 
   -- Search radius every time a zombie is killed
   radius = 2,
 
   -- Should the items consolidate by dropping to the "Floor"
   --  otherwise, they consolidate to a specific zombie.
-  dropToFloor = true,
+  -- NOT YET IMPLEMENTED
+  dropToFloor = false,
 
   -- Should we consolidate only items dropped from zombies
   onlyZombies = true,
 
   -- What shouldn't be consolidated? Can be an item name or type
-  -- All "Clothing" is, by default, not consolidated.
-  consolidationFilters = { "Stake", "Clothing", "nil" },
+  consolidationFilters = { "Stake", "Clothing" },
 }
 
 function LootConsolidation.isValidItem(item)
@@ -104,8 +104,6 @@ function LootConsolidation.consolidateTo(zombie, radius)
       end
     end
   end
-
-  print("Loot Consolidated")
 end
 
 function LootConsolidation.OnZombieDead(zombie)
